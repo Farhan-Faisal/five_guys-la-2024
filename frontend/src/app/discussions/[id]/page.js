@@ -13,51 +13,36 @@ const DiscussionPage = () => {
   const [recommendations, setRecommendations] = useState([]); // State for recommendations
   const [userName, setUserName] = useState("Farhan"); // Simulating your name being stored in state
 
-  // Simulate an API fetch for discussion data
-  // useEffect(() => {
-  //   setDiscussions([]);
-  //   // Simulate an API call to fetch the JSON
-  //   fetch("/data/dummy_discussions.json")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setDiscussions(data);
-  //     })
-  //     .catch((error) => console.error("Error fetching discussions:", error))
-  //     .finally(() => {
-  //       setLoading(false); // Ensure loading is set to false after fetching
-  //     });
-  // }, []);
 
-  function formatDiscussions(data) {
-    // Create a sample title for each discussion
-    const discussions = [
-      { title: "Discussion 1", replies: [] },
-      { title: "Discussion 2", replies: [] },
-      { title: "Discussion 3", replies: [] }
-    ];
+  // function formatDiscussions(data) {
+  //   // Create a sample title for each discussion
+  //   const discussions = [
+  //     { title: "Discussion 1", replies: [] },
+  //     { title: "Discussion 2", replies: [] },
+  //     { title: "Discussion 3", replies: [] }
+  //   ];
   
-    data.forEach((item, index) => {
-      // Create a reply object
-      const reply = {
-        name: item.user_name,
-        message: item.message.replace(/<\/?p>/g, ''), // Remove <p> tags
-        time: new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) // Format time
-      };
+  //   data.forEach((item, index) => {
+  //     // Create a reply object
+  //     const reply = {
+  //       name: item.user_name,
+  //       message: item.message.replace(/<\/?p>/g, ''), // Remove <p> tags
+  //       time: new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) // Format time
+  //     };
   
-      // Push the reply into the corresponding discussion (you can customize how you distribute replies)
-      discussions[index % discussions.length].replies.push(reply);
-    });
+  //     // Push the reply into the corresponding discussion (you can customize how you distribute replies)
+  //     discussions[index % discussions.length].replies.push(reply);
+  //   });
   
-    return discussions;
-  }
+  //   return discussions;
+  // }
 
   useEffect(() => {
     setLoading(true);  // Start loading when the fetch begins
     setDiscussions([]);
   
     // Fetch data from the provided endpoint
-    fetch("http://localhost:4000/discussion-entries?courseId=161721&discussionId=2349485")
+    fetch(`http://localhost:4000/discussion-entries?courseId=161721&discussionId=${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -65,44 +50,16 @@ const DiscussionPage = () => {
         return response.json();
       })
       .then((data) => {
-        // console.log(data); // Log the fetched data
-        const formattedData = formatDiscussions(data);
-        // console.log(JSON.stringify(formattedData, null, 2));
-        setDiscussions(formattedData); // Set the discussions state with the data
+        console.log("FARAHNA")
+        setDiscussions(data);
+        console.log("FARAHNA")
+        // console.log(formattedData)
       })
       .catch((error) => console.error("Error fetching discussions:", error))  // Handle any errors
       .finally(() => {
         setLoading(false); // Ensure loading is set to false after fetching
       });
   }, []);
-  
-
-//   useEffect(() => {
-//     const fetchDiscussions = async () => {
-//       try {
-//         fetch("/data/discussions.json")
-//             .then((response) => response.json())
-//             .then((data) => {
-//                 setDiscussions(data);
-//             })
-//             .catch((error) => console.error("Error fetching discussions:", error));
-
-
-//         // Simulating API call with timeout
-//         setTimeout(() => {
-//           // Setting discussion data after 1 second
-//           setDiscussions(apiDiscussions); // Simulated data here
-//           setLoading(false);
-//         }, 1000);
-//       } catch (error) {
-//         console.error("Error fetching discussions:", error);
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchDiscussions();
-//   }, []);
-
 
   // Simulate recommendation generation as user types
   
@@ -146,21 +103,23 @@ const DiscussionPage = () => {
     fetchRecommendations();
   }, [replyInput]);
 
-  const discussion = discussions[id];
+  console.log("id", id)
+  console.log(discussions)
+
 
   const handleSendReply = () => {
     if (replyInput.trim() === "") return;
 
     // Create a new reply object with the current time
     const newReply = {
-      name: userName, // Use your current name from the state
+      user_name: userName, // Use your current name from the state
       message: replyInput,
-      time: new Date().toLocaleTimeString(), // Use the current time
+      created_at: new Date().toLocaleTimeString(), // Use the current time
     };
 
     // Update the discussion replies with the new reply
     const updatedDiscussions = [...discussions];
-    updatedDiscussions[id].replies.push(newReply); // Add the new reply to the current discussion
+    updatedDiscussions.push(newReply); // Add the new reply to the current discussion
     setDiscussions(updatedDiscussions);
 
     // Clear the input field
@@ -171,7 +130,7 @@ const DiscussionPage = () => {
     return <div>Loading...</div>;
   }
 
-  if (!discussion) {
+  if (!discussions) {
     return <div>Discussion not found</div>;
   }
 
@@ -179,9 +138,9 @@ const DiscussionPage = () => {
     <div className="flex h-screen bg-gray-100">
       {/* Left side (Replies and Reply Input) */}
       <div className="w-1/2 flex flex-col border-r border-gray-300 bg-white">
-        <div className="p-4 bg-blue-500 text-white text-center font-bold">
+        {/* <div className="p-4 bg-blue-500 text-white text-center font-bold">
           {discussion.title}
-        </div>
+        </div> */}
 
         <div className="p-4">
           <button
@@ -193,16 +152,16 @@ const DiscussionPage = () => {
         </div>
 
         <div className="flex-1 p-4 overflow-y-auto">
-          {discussion.replies.map((reply, index) => (
+          {discussions.map((reply, index) => (
             <div
               key={index}
               className={`mb-4 p-3 rounded-lg ${
-                reply.name === userName ? "bg-blue-100 text-right" : "bg-gray-200"
+                reply.user_name === userName ? "bg-blue-100 text-right" : "bg-gray-200"
               }`}
             >
-              <div className="font-bold">{reply.name}</div>
+              <div className="font-bold">{reply.user_name}</div>
               <div>{reply.message}</div>
-              <div className="text-sm text-gray-500">{reply.time}</div>
+              <div className="text-sm text-gray-500">{reply.created_at}</div>
             </div>
           ))}
         </div>

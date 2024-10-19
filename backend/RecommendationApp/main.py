@@ -44,7 +44,6 @@ def get_similar_posts(request: SimilarityRequest):
             input_post=request.input_post,
             top_n=request.top_n,
         )
-
         # similar_replies = post_sim_finder.find_similar_posts(
         #     input_post=request.input_post,
         #     top_n=request.top_n,
