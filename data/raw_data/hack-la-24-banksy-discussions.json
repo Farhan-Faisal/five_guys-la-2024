@@ -1,0 +1,520 @@
+[
+    {
+        "discussion_topic": {
+          "id": 1,
+          "title": "The Purpose of Art",
+          "message": "I believe Banksy's art is a powerful way to advocate for marginalized voices. We can use it to address local immigration issues, just like he does. Street art should be a platform for activism.",
+          "posted_at": "2024-10-17T12:00:00Z",
+          "last_reply_at": "2024-10-18T12:00:00Z",
+          "require_initial_post": true,
+          "user_name": "Ana Maria Lopez",
+          "user_id": 3,
+          "discussion_type": "threaded",
+          "allow_rating": false,
+          "lock_at": null,
+          "pinned": false,
+          "replies": [
+            {
+              "id": 101,
+              "parent_id": null,
+              "user_id": 8,
+              "user_name": "Maximilian Schmidt",
+              "message": "While I see your point, I think Banksy’s work is often more about provoking thought than providing solutions. He uses satire to challenge societal norms, but that doesn’t always translate into actionable change. It can be seen as merely performative.",
+              "created_at": "2024-10-17T13:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 102,
+              "parent_id": 101,
+              "user_id": 3,
+              "user_name": "Ana Maria Lopez",
+              "message": "But isn’t it performative action that gets people talking? We need to engage the community through discussions sparked by our art, even if it's not a direct solution.",
+              "created_at": "2024-10-17T14:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 103,
+              "parent_id": 102,
+              "user_id": 8,
+              "user_name": "Maximilian Schmidt",
+              "message": "I’m concerned about the risks of public engagement. Street art can be seen as vandalism, and if we align ourselves with controversial themes, it could backfire and lead to negative consequences for our careers as artists.",
+              "created_at": "2024-10-17T15:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 104,
+              "parent_id": 103,
+              "user_id": 3,
+              "user_name": "Ana Maria Lopez",
+              "message": "That’s a valid concern, but history shows that the most impactful art often comes from a place of risk. Banksy took that risk, and it’s paid off. If we want to create real dialogue, we must be willing to stand behind our beliefs, even if it means facing backlash.",
+              "created_at": "2024-10-17T16:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 105,
+              "parent_id": 104,
+              "user_id": 8,
+              "user_name": "Maximilian Schmidt",
+              "message": "But does that mean we should intentionally provoke outrage? I believe there are ways to engage the community without putting ourselves in jeopardy.",
+              "created_at": "2024-10-17T17:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 106,
+              "parent_id": 105,
+              "user_id": 3,
+              "user_name": "Ana Maria Lopez",
+              "message": "We need to address local issues like immigration and identity through our art. That’s where we can make a significant impact.",
+              "created_at": "2024-10-17T18:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 107,
+              "parent_id": 106,
+              "user_id": 8,
+              "user_name": "Maximilian Schmidt",
+              "message": "While those are important, I think we need to consider a broader spectrum of local issues, including socioeconomic factors or environmental concerns. Focusing solely on immigration may alienate other groups in our community.",
+              "created_at": "2024-10-17T19:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 108,
+              "parent_id": 107,
+              "user_id": 3,
+              "user_name": "Ana Maria Lopez",
+              "message": "I don’t think highlighting specific issues is alienating. It’s about giving a voice to those who often go unheard. We can tackle multiple issues, but we must prioritize those most pressing in our community.",
+              "created_at": "2024-10-17T20:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 109,
+              "parent_id": null, 
+              "user_id": 8,
+              "user_name": "Maximilian Schmidt",
+              "message": "I feel that while we can use street art for activism, we also have a responsibility to respect the community’s needs. Our art should reflect what the community wants, not just our own perspectives.",
+              "created_at": "2024-10-17T21:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 110,
+              "parent_id": 109,
+              "user_id": 3,
+              "user_name": "Ana Maria Lopez",
+              "message": "I disagree. Sometimes, the community doesn’t know what it needs until it sees it represented in art. Banksy’s work challenges the status quo; we should do the same and lead the conversation.",
+              "created_at": "2024-10-17T22:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 111,
+              "parent_id": 110,
+              "user_id": 8,
+              "user_name": "Maximilian Schmidt",
+              "message": "But art can also reinforce harmful stereotypes if it isn’t handled thoughtfully. We need to be mindful of how our messages are received, not just what we want to express.",
+              "created_at": "2024-10-17T23:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 112,
+              "parent_id": 111,
+              "user_id": 3,
+              "user_name": "Ana Maria Lopez",
+              "message": "For me, success in using street art for activism is about creating a buzz and starting conversations. If we can engage the community in discussions about important issues, that’s a win.",
+              "created_at": "2024-10-18T00:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 113,
+              "parent_id": 112,
+              "user_id": 8,
+              "user_name": "Maximilian Schmidt",
+              "message": "I think success should be measured by tangible outcomes. If we’re not seeing changes or actions taken in response to our art, then what’s the point? We need to focus on results, not just awareness.",
+              "created_at": "2024-10-18T01:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 114,
+              "parent_id": 113,
+              "user_id": 3,
+              "user_name": "Ana Maria Lopez",
+              "message": "But awareness is the first step! If our art can make people think and talk about issues, that’s crucial. Change takes time; we can't expect immediate results.",
+              "created_at": "2024-10-18T02:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            }
+          ]
+        }
+      },
+
+      {
+        "discussion_topic": {
+          "id": 2,
+          "title": "The Role of Women in Banksy’s Art",
+          "message": "How can Banksy’s depictions of women in his art challenge cultural norms and stereotypes, and what can we learn from these representations for our own work?",
+          "posted_at": "2024-10-17T12:00:00Z",
+          "last_reply_at": "2024-10-18T12:00:00Z",
+          "require_initial_post": true,
+          "user_name": "Fatima Al-Hassan",
+          "user_id": 5,
+          "discussion_type": "threaded",
+          "allow_rating": false,
+          "lock_at": null,
+          "pinned": false,
+          "replies": [
+            {
+              "id": 201,
+              "parent_id": null,
+              "user_id": 1,
+              "user_name": "Lila Patel",
+              "message": "I think Banksy’s portrayal of women is really powerful. For instance, his piece with the little girl holding a balloon shows vulnerability, but it also suggests hope. It challenges the stereotype of women being helpless.",
+              "created_at": "2024-10-17T13:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 202,
+              "parent_id": 201,
+              "user_id": 4,
+              "user_name": "Yuki Tanaka",
+              "message": "I agree, Lila. I also see how Banksy uses irony in his work. For example, his depiction of a woman as a powerful figure, like in 'Girl with a Balloon,' subverts traditional roles. It encourages us to rethink how women are represented in art.",
+              "created_at": "2024-10-17T14:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 203,
+              "parent_id": 202,
+              "user_id": 2,
+              "user_name": "Jamal Thompson",
+              "message": "While I appreciate your points, I feel that Banksy sometimes uses women merely as symbols. Are we really challenging cultural norms if we don’t go deeper into their stories and struggles? His art can risk oversimplifying complex issues.",
+              "created_at": "2024-10-17T15:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 204,
+              "parent_id": 203,
+              "user_id": 9,
+              "user_name": "Sofia Ribeiro",
+              "message": "That’s an important critique, Jamal. I think we should also examine how these representations resonate with audiences. Banksy’s art invites conversations, which can lead to a broader understanding of women’s experiences. How can we use this approach in our own work to amplify these voices?",
+              "created_at": "2024-10-17T16:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 205,
+              "parent_id": 202,
+              "user_id": 1,
+              "user_name": "Lila Patel",
+              "message": "Exactly! It’s about starting dialogues. If we create art that reflects the complexities of women’s lives, we can honor those narratives. Maybe we can incorporate storytelling elements into our pieces to give depth to our representations.",
+              "created_at": "2024-10-17T17:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 206,
+              "parent_id": 205,
+              "user_id": 4,
+              "user_name": "Yuki Tanaka",
+              "message": "That sounds great! We could also explore different mediums, like incorporating digital elements or interactive installations that allow audiences to engage with the stories behind our artworks.",
+              "created_at": "2024-10-17T18:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 207,
+              "parent_id": 206,
+              "user_id": 2,
+              "user_name": "Jamal Thompson",
+              "message": "I like that idea, but we should be careful not to tokenize women in our art. It’s essential that we involve women from diverse backgrounds in the creative process. Their perspectives can help ensure that our work is authentic and respectful.",
+              "created_at": "2024-10-17T19:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 208,
+              "parent_id": 207,
+              "user_id": 9,
+              "user_name": "Sofia Ribeiro",
+              "message": "Absolutely, Jamal. Collaboration is key. We should aim to create art that reflects lived experiences rather than just our interpretations of those experiences. How can we actively engage with these communities as we develop our projects?",
+              "created_at": "2024-10-17T20:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 209,
+              "parent_id": 208,
+              "user_id": 1,
+              "user_name": "Lila Patel",
+              "message": "One way could be to host community workshops or discussions where we invite women to share their stories. We could use their input to guide our artistic decisions and ensure their voices are central in our work.",
+              "created_at": "2024-10-17T21:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 210,
+              "parent_id": 209,
+              "user_id": 4,
+              "user_name": "Yuki Tanaka",
+              "message": "That’s a fantastic idea! Engaging directly with the community would not only enrich our art but also create a sense of ownership among those whose stories we want to tell.",
+              "created_at": "2024-10-17T22:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 211,
+              "parent_id": 210,
+              "user_id": 2,
+              "user_name": "Jamal Thompson",
+              "message": "And it can challenge the very norms we’re discussing! By giving space to real voices, we can contribute to changing the narrative around women in our communities.",
+              "created_at": "2024-10-17T23:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 212,
+              "parent_id": 211,
+              "user_id": 9,
+              "user_name": "Sofia Ribeiro",
+              "message": "This is such an inspiring conversation! It’s crucial that we remain aware of the power dynamics in our art and strive for inclusivity and authenticity in our representations.",
+              "created_at": "2024-10-18T00:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 213,
+              "parent_id": 212,
+              "user_id": 1,
+              "user_name": "Lila Patel",
+              "message": "Definitely! I’m excited to see how we can bring these ideas into our projects and honor the narratives of women through our art.",
+              "created_at": "2024-10-18T01:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            }
+          ]
+        }
+      },
+
+      {
+        "discussion_topic": {
+          "id": 3,
+          "title": "In what ways can Banksy’s approach to street art foster community engagement and dialogue, and what are the potential drawbacks of using this medium?",
+          "message": "How can Banksy’s approach to street art foster community engagement and dialogue, and what are the potential drawbacks of using this medium?",
+          "posted_at": "2024-10-18T12:00:00Z",
+          "last_reply_at": "2024-10-19T12:00:00Z",
+          "require_initial_post": true,
+          "user_name": "Yuki Tanaka",
+          "user_id": 4,
+          "discussion_type": "threaded",
+          "allow_rating": false,
+          "lock_at": null,
+          "pinned": false,
+          "replies": [
+            {
+              "id": 301,
+              "parent_id": null,
+              "user_id": 4,
+              "user_name": "Yuki Tanaka",
+              "message": "I think Banksy’s work really engages the community by addressing social issues in a way that is accessible. Street art can break down barriers and invite discussions. What do you all think?",
+              "created_at": "2024-10-18T13:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 302,
+              "parent_id": 301,
+              "user_id": 3,
+              "user_name": "Ana Maria Lopez",
+              "message": "I agree that street art can foster dialogue, but we have to consider how effective it really is. People might enjoy the art but not engage with the underlying messages.",
+              "created_at": "2024-10-18T14:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 303,
+              "parent_id": 301,
+              "user_id": 2,
+              "user_name": "Jamal Thompson",
+              "message": "Exactly! Just because something looks good doesn’t mean it’s sparking real conversations. We have to think about how to ensure our art isn’t just visually appealing but also thought-provoking.",
+              "created_at": "2024-10-18T15:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 304,
+              "parent_id": 301,
+              "user_id": 4,
+              "user_name": "Yuki Tanaka",
+              "message": "But isn’t the visual appeal part of what draws people in? If we can get them to look at the art, we have a chance to get them thinking about the issues it represents.",
+              "created_at": "2024-10-18T16:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 305,
+              "parent_id": 304,
+              "user_id": 3,
+              "user_name": "Ana Maria Lopez",
+              "message": "True, but if people walk away only impressed by the aesthetics without understanding the message, have we really achieved our goal?",
+              "created_at": "2024-10-18T17:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 306,
+              "parent_id": null,
+              "user_id": 4,
+              "user_name": "Yuki Tanaka",
+              "message": "Banksy’s art is often provocative, which is part of what makes it powerful. It can challenge viewers' assumptions and spark important conversations.",
+              "created_at": "2024-10-18T18:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 307,
+              "parent_id": 306,
+              "user_id": 8,
+              "user_name": "Maximilian Schmidt",
+              "message": "I see your point, but provoking thought can also lead to misinterpretation. If the message isn’t clear, people may take away completely different meanings, which could dilute the intended impact.",
+              "created_at": "2024-10-18T19:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 308,
+              "parent_id": 307,
+              "user_id": 9,
+              "user_name": "Sofia Ribeiro",
+              "message": "That’s a valid concern, Maximilian. However, isn’t it also important to allow space for individual interpretation? Art can mean different things to different people, and that’s part of its beauty.",
+              "created_at": "2024-10-18T20:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 309,
+              "parent_id": 306,
+              "user_id": 4,
+              "user_name": "Yuki Tanaka",
+              "message": "I think there’s a balance to strike. We want to provoke thought but also guide people towards the intended message. Maybe we can incorporate text or explanations alongside our art to clarify our points.",
+              "created_at": "2024-10-18T21:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 310,
+              "parent_id": 309,
+              "user_id": 8,
+              "user_name": "Maximilian Schmidt",
+              "message": "That might help, but we should also be cautious not to over-explain. If we do, it could take away from the power of the artwork itself.",
+              "created_at": "2024-10-18T22:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 311,
+              "parent_id": null,
+              "user_id": 4,
+              "user_name": "Yuki Tanaka",
+              "message": "Engaging with the community can enhance our work. By getting feedback from local residents, we can make sure our art resonates with them and addresses their concerns.",
+              "created_at": "2024-10-18T23:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 312,
+              "parent_id": 311,
+              "user_id": 5,
+              "user_name": "Fatima Al-Hassan",
+              "message": "I think involving the community is crucial, but we need to be careful about how we frame our questions. If we only ask leading questions, we might not get honest feedback.",
+              "created_at": "2024-10-19T00:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 313,
+              "parent_id": 312,
+              "user_id": 2,
+              "user_name": "Jamal Thompson",
+              "message": "That’s a great point, Fatima. We need to create a space where community members feel safe to express their true feelings, even if it contradicts our vision.",
+              "created_at": "2024-10-19T01:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 314,
+              "parent_id": 312,
+              "user_id": 4,
+              "user_name": "Yuki Tanaka",
+              "message": "I understand that, but isn’t there a risk that we might end up compromising our artistic vision? If we cater too much to community input, we could lose the essence of what we wanted to express.",
+              "created_at": "2024-10-19T02:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            },
+            {
+              "id": 315,
+              "parent_id": 311,
+              "user_id": 5,
+              "user_name": "Fatima Al-Hassan",
+              "message": "But isn’t it our responsibility as artists to reflect the community’s voice? If we ignore their perspectives, we risk creating art that’s disconnected from the very people it’s meant to engage.",
+              "created_at": "2024-10-19T03:00:00Z",
+              "updated_at": null,
+              "deleted": false,
+              "rating": null
+            }
+        ]
+    }
+    }    
+]
