@@ -215,10 +215,10 @@ const DiscussionPage = () => {
 
         <button
             onClick={handleSendReply}
-            style={{ backgroundColor: calculateColor(Math.round(readabilityScore)) }} // Set dynamic background color
+            style={{ backgroundColor: calculateColor(Math.round(readabilityScore) == 19 ? 0 : Math.round(readabilityScore)) }} // Set dynamic background color
             className="ml-4 w-12 h-12 flex items-center justify-center bg-blue-500 text-white rounded-full hover:bg-blue-600"
           >
-            {Math.round(readabilityScore)}
+            {Math.round(readabilityScore) == 19 ? 0 : Math.round(readabilityScore)}
           </button>
 
 
