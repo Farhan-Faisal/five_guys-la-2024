@@ -1,13 +1,11 @@
-// routes/discussionEntries.js
-
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
 // Route to get discussion entries
 router.get('/', async (req, res) => {
-    const courseId = req.query.courseId; // Assuming you're passing the course ID as a query parameter
-    const discussionId = req.query.discussionId; // Assuming you're passing the discussion ID as a query parameter
+    const courseId = req.query.courseId; // Course ID as a query parameter
+    const discussionId = req.query.discussionId; // Discussion ID as a query parameter
     const canvasToken = process.env.CANVAS_TOKEN; // Get token from environment variables
 
     if (!courseId || !discussionId) {
@@ -24,16 +22,15 @@ router.get('/', async (req, res) => {
         });
 
         const entries = response.data;
-        const level1Replies = [];
 
-        // Filter for level 1 replies
-        entries.forEach(entry => {
-            if (entry.parent_id === null) { // Assuming level 1 replies have no parent
-                level1Replies.push(entry);
-            }
-        });
+        // Map to get user_name, message, and created_at from entries
+        const filteredReplies = entries.map(entry => ({
+            user_name: entry.user_name,
+            message: entry.message,
+            created_at: entry.created_at
+        }));
 
-        return res.status(200).json(level1Replies); // Return the level 1 replies
+        return res.status(200).json(filteredReplies); // Return the filtered replies
 
     } catch (error) {
         console.error('Error fetching data from Canvas API:', error.message);
