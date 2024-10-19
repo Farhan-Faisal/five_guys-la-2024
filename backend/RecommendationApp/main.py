@@ -37,6 +37,7 @@ def get_similar_posts(request: SimilarityRequest):
     Endpoint to retrieve top N similar lecture documents based on the input post.
     """
     try:
+        print(request.input_post)
         similar = similarity_finder.find_similar_posts(
             input_post=request.input_post,
             top_n=request.top_n,
