@@ -1,1 +1,3 @@
 env
+backend/canvas_backend/.env
+backend/canvas_backend/node_modules/
