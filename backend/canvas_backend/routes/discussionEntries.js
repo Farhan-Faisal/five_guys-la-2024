@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const { convert } = require('html-to-text'); // Import the html-to-text package
 const router = express.Router();
 
 // Route to get a list of level 1 discussion replies
@@ -26,7 +27,8 @@ router.get('/', async (req, res) => {
         // Map to get user_name, message, and created_at from entries
         const filteredReplies = entries.map(entry => ({
             user_name: entry.user_name,
-            message: entry.message,
+            // Convert HTML to text and remove newline characters
+            message: convert(entry.message, { wordwrap: 130 }).replace(/\n/g, ' '), // Replace newline characters with space
             created_at: entry.created_at
         }));
 
