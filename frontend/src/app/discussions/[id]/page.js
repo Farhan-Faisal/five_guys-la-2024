@@ -17,6 +17,16 @@ const DiscussionPage = () => {
   const [recommendations, setRecommendations] = useState([]); // State for recommendations
   const [userName, setUserName] = useState("Farhan"); // Simulating your name being stored in state
 
+  const [visibleRecommendations, setVisibleRecommendations] = useState([]);
+
+  useEffect(() => {
+    recommendations.forEach((_, index) => {
+      setTimeout(() => {
+        setVisibleRecommendations((prev) => [...prev, index]);
+      }, index * 500); // Adjust timing here for fade-in effect
+    });
+  }, [recommendations]);
+  
 
   useEffect(() => {
     setLoading(true);  // Start loading when the fetch begins
@@ -136,6 +146,7 @@ const DiscussionPage = () => {
 
     // Clear the input field
     setReplyInput("");
+    setVisibleRecommendations([]);
   };
 
   const calculateColor = (score) => {
@@ -227,33 +238,36 @@ const DiscussionPage = () => {
       <div className="w-1/2 p-4 bg-gray-50">
         <div className="text-lg font-bold mb-4">Recommendations</div>
         <div className="flex-1 bg-gray-200 p-4 rounded-lg">
-         {recommendations.length > 0 ? (
-            recommendations.map((rec, index) => (
-              <div key={index} className="mb-4">
-                {/* Determine heading based on index */}
-                  {index === 0 ? (
-                    // Heading for the first lecture recommendation
-                    <h2 style={{ color: 'blue', fontSize: '20px', fontWeight: 'bold' }}>
-                      Lecture Recommendations
-                    </h2>
-                  ) : index === 2 ? (
-                    // Heading for other relevant posts starting from index 2
-                    <h3 style={{ color: 'black', fontSize: '20px', fontWeight: 'bold' }}>
-                      Relevant Posts
-                    </h3>
-                  ) :
-                    null
-                  }
+        {recommendations.length > 0 ? (
+        recommendations.map((rec, index) => {
+          // Calculate inline styles for fade-in effect
+          const isVisible = visibleRecommendations.includes(index);
+          const fadeStyle = {
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
+            transition: 'opacity 0.5s, transform 0.5s', // Duration for fade-in effect
+          };
 
-                
-                <p className={index >= 2 ? "text-red-500" : "text-black"}>
-                  {rec}
-                </p>
-              </div>
-            ))
-          ) : (
-            <p>Start typing your reply to see recommendations.</p>
-          )}
+          return (
+            <div key={index} className="mb-4" style={fadeStyle}>
+              {index === 0 ? (
+                <h2 style={{ color: 'blue', fontSize: '20px', fontWeight: 'bold' }}>
+                  Lecture Recommendations
+                </h2>
+              ) : index === 2 ? (
+                <h3 style={{ color: 'black', fontSize: '20px', fontWeight: 'bold' }}>
+                  Relevant Posts
+                </h3>
+              ) : null}
+              <p className={index >= 2 ? "text-red-500" : "text-black"}>
+                {rec}
+              </p>
+            </div>
+          );
+        })
+      ) : (
+        <p>Start typing your reply to see recommendations.</p>
+      )}
         </div>
       </div>
     </div>
