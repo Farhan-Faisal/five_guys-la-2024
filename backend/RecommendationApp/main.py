@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # Initialize the FastAPI app
 app = FastAPI(title="Lecture Document Similarity API", version="1.1")
+depth_ranker = DepthRanker()
 
 import os
 print(os.getcwd())
@@ -30,7 +31,7 @@ class SimilarityResponse(BaseModel):
     similar_posts: list
 
 class ReadabilityRequest(BaseModel):
-    text:str
+    input_post: str
 
 # Define the response model for readability
 class ReadabilityResponse(BaseModel):
