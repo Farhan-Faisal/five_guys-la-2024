@@ -29,6 +29,9 @@ class SimilarityRequest(BaseModel):
 class SimilarityResponse(BaseModel):
     similar_posts: list
 
+class ReadabilityRequest(BaseModel):
+    text:str
+
 # Define the response model for readability
 class ReadabilityResponse(BaseModel):
     dale_chall_readability_score: float

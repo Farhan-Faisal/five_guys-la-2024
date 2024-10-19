@@ -36,11 +36,11 @@ const Home = () => {
         <div className="p-4 bg-blue-500 text-white text-center font-bold">
           Discussion Titles
         </div>
-        <div className="flex-1 p-4 overflow-y-auto">
+        <div className="flex-1 p- 4 overflow-y-auto">
           {/* Display discussion titles in a vertical list */}
           <div className="space-y-4">
             {discussions.map((discussion, index) => (
-              <Link key={discussion.id} href={`/discussions/${discussion.id}${encodeURIComponent(discussion.title)}`}>
+              <Link key={discussion.id} href={`/discussions/${discussion.id}`}>
                 <div className="p-3 bg-gray-200 rounded-lg m-2 cursor-pointer hover:bg-gray-300">
                 <strong>{discussion.title}</strong>
                 {/* {discussion.title} Adjust this line based on your API response structure */}

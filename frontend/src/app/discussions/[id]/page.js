@@ -11,6 +11,7 @@ const DiscussionPage = () => {
   // const  title = router.query;
 
   const [discussions, setDiscussions] = useState([]);
+  const [readabilityScore, setReadabilityScore] = useState(null);
   const [loading, setLoading] = useState(true);
   const [replyInput, setReplyInput] = useState(""); // State for reply input
   const [recommendations, setRecommendations] = useState([]); // State for recommendations
@@ -79,9 +80,45 @@ const DiscussionPage = () => {
     fetchRecommendations();
   }, [replyInput]);
 
+  useEffect(() => {
+    const fetchReadabilityScore = async () => {
+      if (replyInput.trim() !== "") {
+        try {
+          const response = await fetch("http://127.0.0.1:8000/readability_scores", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              input_post: replyInput,
+            }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            // Assuming the API returns a number directly as the readability score
+            console.log("scorennjrvnj", response)
+            setReadabilityScore(data.readability_score); // Adjust according to your API response structure
+          } else {
+            console.error("Failed to fetch readability score:", response.statusText);
+            setReadabilityScore(null); // Reset readability score in case of failure
+          }
+        } catch (error) {
+          console.error("Error fetching readability score:", error);
+          setReadabilityScore(null); // Reset readability score in case of error
+        }
+      } else {
+        setReadabilityScore(null); // Clear score if input is empty
+      }
+    };
+
+    fetchReadabilityScore();
+  }, [replyInput]);
+
+
   console.log("id", id)
-  // console.log("id", title)
   console.log(discussions)
+  console.log(readabilityScore)
 
   const handleSendReply = () => {
     if (replyInput.trim() === "") return;
@@ -115,7 +152,7 @@ const DiscussionPage = () => {
       {/* Left side (Replies and Reply Input) */}
       <div className="w-1/2 flex flex-col border-r border-gray-300 bg-white">
         <div className="p-4 bg-blue-500 text-white text-center font-bold">
-          {title}
+          {/* {title} */}
         </div>
 
         <div className="p-4">
