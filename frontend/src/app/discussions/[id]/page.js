@@ -57,19 +57,45 @@ const DiscussionPage = () => {
 
 
   // Simulate recommendation generation as user types
-  useEffect(() => {
-    if (replyInput.trim() !== "") {
-      // Generate 3 dummy recommendation paragraphs based on the reply input
-      const dummyRecommendations = [
-        `Based on your input: "${replyInput}", here's a contextual thought on previous discussions...`,
-        `Another point to consider related to "${replyInput}" is this aspect we discussed previously...`,
-        `"${replyInput}" could align with the recommendations we've seen in past conversations.`,
-      ];
+  
 
-      setRecommendations(dummyRecommendations);
-    } else {
-      setRecommendations([]); // Clear recommendations if input is empty
-    }
+
+  useEffect(() => {
+    const fetchRecommendations = async () => {
+      if (replyInput.trim() !== "") {
+        try {
+          const response = await fetch("http://127.0.0.1:8000/similar_posts", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              input_post: replyInput,
+              previous_replies: discussionReplies,
+              top_n: 3
+            }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            const extractedRecommendations = data.similar_posts.map(postObj => postObj.post);
+            setRecommendations(extractedRecommendations || []);
+
+          } else {
+            console.error("Failed to fetch recommendations:", response.statusText);
+            setRecommendations([]); // Reset recommendations in case of failure
+          }
+        } catch (error) {
+          console.error("Error fetching recommendations:", error);
+          setRecommendations([]); // Reset recommendations in case of error
+        }
+      } else {
+        setRecommendations([]); // Clear recommendations if input is empty
+      }
+    };
+
+    fetchRecommendations();
   }, [replyInput]);
 
   const discussion = discussions[id];
