@@ -4,38 +4,17 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from 'next/navigation';
 
 const DiscussionPage = () => {
-  const { id } = useParams(); // Get dynamic route parameter 'id'
+  const { id } = useParams(); // Get the dynamic route parameter 'id'
+  // const { title } = useParams();
+
   const router = useRouter(); // Use the router for navigation
+  // const  title = router.query;
 
   const [discussions, setDiscussions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [replyInput, setReplyInput] = useState(""); // State for reply input
   const [recommendations, setRecommendations] = useState([]); // State for recommendations
   const [userName, setUserName] = useState("Farhan"); // Simulating your name being stored in state
-
-
-  // function formatDiscussions(data) {
-  //   // Create a sample title for each discussion
-  //   const discussions = [
-  //     { title: "Discussion 1", replies: [] },
-  //     { title: "Discussion 2", replies: [] },
-  //     { title: "Discussion 3", replies: [] }
-  //   ];
-  
-  //   data.forEach((item, index) => {
-  //     // Create a reply object
-  //     const reply = {
-  //       name: item.user_name,
-  //       message: item.message.replace(/<\/?p>/g, ''), // Remove <p> tags
-  //       time: new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) // Format time
-  //     };
-  
-  //     // Push the reply into the corresponding discussion (you can customize how you distribute replies)
-  //     discussions[index % discussions.length].replies.push(reply);
-  //   });
-  
-  //   return discussions;
-  // }
 
   useEffect(() => {
     setLoading(true);  // Start loading when the fetch begins
@@ -61,10 +40,7 @@ const DiscussionPage = () => {
       });
   }, []);
 
-  // Simulate recommendation generation as user types
-  
-
-
+ 
   useEffect(() => {
     const fetchRecommendations = async () => {
       if (replyInput.trim() !== "") {
@@ -104,8 +80,8 @@ const DiscussionPage = () => {
   }, [replyInput]);
 
   console.log("id", id)
+  // console.log("id", title)
   console.log(discussions)
-
 
   const handleSendReply = () => {
     if (replyInput.trim() === "") return;
@@ -138,9 +114,9 @@ const DiscussionPage = () => {
     <div className="flex h-screen bg-gray-100">
       {/* Left side (Replies and Reply Input) */}
       <div className="w-1/2 flex flex-col border-r border-gray-300 bg-white">
-        {/* <div className="p-4 bg-blue-500 text-white text-center font-bold">
-          {discussion.title}
-        </div> */}
+        <div className="p-4 bg-blue-500 text-white text-center font-bold">
+          {title}
+        </div>
 
         <div className="p-4">
           <button
