@@ -14,20 +14,68 @@ const DiscussionPage = () => {
   const [userName, setUserName] = useState("Farhan"); // Simulating your name being stored in state
 
   // Simulate an API fetch for discussion data
+  // useEffect(() => {
+  //   setDiscussions([]);
+  //   // Simulate an API call to fetch the JSON
+  //   fetch("/data/dummy_discussions.json")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setDiscussions(data);
+  //     })
+  //     .catch((error) => console.error("Error fetching discussions:", error))
+  //     .finally(() => {
+  //       setLoading(false); // Ensure loading is set to false after fetching
+  //     });
+  // }, []);
+
+  function formatDiscussions(data) {
+    // Create a sample title for each discussion
+    const discussions = [
+      { title: "Discussion 1", replies: [] },
+      { title: "Discussion 2", replies: [] },
+      { title: "Discussion 3", replies: [] }
+    ];
+  
+    data.forEach((item, index) => {
+      // Create a reply object
+      const reply = {
+        name: item.user_name,
+        message: item.message.replace(/<\/?p>/g, ''), // Remove <p> tags
+        time: new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) // Format time
+      };
+  
+      // Push the reply into the corresponding discussion (you can customize how you distribute replies)
+      discussions[index % discussions.length].replies.push(reply);
+    });
+  
+    return discussions;
+  }
+
   useEffect(() => {
+    setLoading(true);  // Start loading when the fetch begins
     setDiscussions([]);
-    // Simulate an API call to fetch the JSON
-    fetch("/data/dummy_discussions.json")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setDiscussions(data);
+  
+    // Fetch data from the provided endpoint
+    fetch("http://localhost:4000/discussion-entries?courseId=161721&discussionId=2349485")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
       })
-      .catch((error) => console.error("Error fetching discussions:", error))
+      .then((data) => {
+        // console.log(data); // Log the fetched data
+        const formattedData = formatDiscussions(data);
+        // console.log(JSON.stringify(formattedData, null, 2));
+        setDiscussions(formattedData); // Set the discussions state with the data
+      })
+      .catch((error) => console.error("Error fetching discussions:", error))  // Handle any errors
       .finally(() => {
         setLoading(false); // Ensure loading is set to false after fetching
       });
   }, []);
+  
 
 //   useEffect(() => {
 //     const fetchDiscussions = async () => {
@@ -71,7 +119,7 @@ const DiscussionPage = () => {
             },
             body: JSON.stringify({
               input_post: replyInput,
-              previous_replies: discussionReplies,
+              previous_replies: discussions,
               top_n: 3
             }),
           });
