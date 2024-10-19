@@ -84,7 +84,7 @@ const DiscussionPage = () => {
     const fetchReadabilityScore = async () => {
       if (replyInput.trim() !== "") {
         try {
-          const response = await fetch("http://127.0.0.1:8000/readability_scores", {
+          const response = await fetch("http://127.0.0.1:8000/readability_score", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -96,9 +96,7 @@ const DiscussionPage = () => {
 
           if (response.ok) {
             const data = await response.json();
-            // Assuming the API returns a number directly as the readability score
-            console.log("scorennjrvnj", response)
-            setReadabilityScore(data.readability_score); // Adjust according to your API response structure
+            setReadabilityScore(data.dale_chall_readability_score); // Adjust according to your API response structure
           } else {
             console.error("Failed to fetch readability score:", response.statusText);
             setReadabilityScore(null); // Reset readability score in case of failure
@@ -117,8 +115,8 @@ const DiscussionPage = () => {
 
 
   console.log("id", id)
-  console.log(discussions)
-  console.log(readabilityScore)
+  console.log("discussion",  discussions)
+  console.log("score", readabilityScore)
 
   const handleSendReply = () => {
     if (replyInput.trim() === "") return;
@@ -138,6 +136,18 @@ const DiscussionPage = () => {
     // Clear the input field
     setReplyInput("");
   };
+
+  const calculateColor = (score) => {
+    // Ensure score is between 1 and 20
+    const clampedScore = Math.max(1, Math.min(score, 20));
+    
+    // Calculate red and green values
+    const red = Math.round((20 - clampedScore) * 255 / 19); // From 255 to 0
+    const green = Math.round((clampedScore - 1) * 255 / 19); // From 0 to 255
+  
+    return `rgb(${red}, ${green}, 0)`; // RGB color string
+  };
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -188,6 +198,19 @@ const DiscussionPage = () => {
             className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Type your reply..."
           />
+
+        <button
+            onClick={handleSendReply}
+            style={{ backgroundColor: calculateColor(Math.round(readabilityScore)) }} // Set dynamic background color
+            className="ml-4 w-12 h-12 flex items-center justify-center bg-blue-500 text-white rounded-full hover:bg-blue-600"
+          >
+            {Math.round(readabilityScore)}
+          </button>
+
+
+          {/* <div className="ml-4 w-12 h-12 flex items-center justify-center bg-blue-500 text-white rounded-full hover:bg-blue-600">
+            {Math.round(readabilityScore)}
+          </div> */}
           <button
             onClick={handleSendReply}
             className="ml-4 p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
