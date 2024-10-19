@@ -17,6 +17,7 @@ const DiscussionPage = () => {
   const [recommendations, setRecommendations] = useState([]); // State for recommendations
   const [userName, setUserName] = useState("Farhan"); // Simulating your name being stored in state
 
+
   useEffect(() => {
     setLoading(true);  // Start loading when the fetch begins
     setDiscussions([]);
@@ -162,7 +163,9 @@ const DiscussionPage = () => {
       {/* Left side (Replies and Reply Input) */}
       <div className="w-1/2 flex flex-col border-r border-gray-300 bg-white">
         <div className="p-4 bg-blue-500 text-white text-center font-bold">
-          {/* {title} */}
+          <span>Ketchup or Mustard?</span>
+          <br/>
+          <span>Do you prefer or mustard? Why?</span>
         </div>
 
         <div className="p-4">
