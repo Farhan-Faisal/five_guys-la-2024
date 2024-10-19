@@ -51,17 +51,20 @@ def get_similar_posts(request: SimilarityRequest):
         print(request.input_post)
         similar_lectures = lec_similarity_finder.find_similar_posts(
             input_post=request.input_post,
-            top_n=request.top_n,
+            top_n=2,
         )
-        # similar_replies = post_sim_finder.find_similar_posts(
-        #     input_post=request.input_post,
-        #     top_n=request.top_n,
-        # )
+
+        similar_replies = post_sim_finder.find_similar_posts(
+            input_post=request.input_post,
+            top_n=2,
+        )
 
         # Format the response
         similar_lectures = [{"post": post, "score": score} for post, score in similar_lectures]
-
-        return SimilarityResponse(similar_posts=similar_lectures)
+        similar_replies = [{"post": post, "score": score} for post, score in similar_replies]
+        response = similar_lectures + similar_replies 
+        return SimilarityResponse(similar_posts=response)
+    
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

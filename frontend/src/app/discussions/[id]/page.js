@@ -224,10 +224,28 @@ const DiscussionPage = () => {
       <div className="w-1/2 p-4 bg-gray-50">
         <div className="text-lg font-bold mb-4">Recommendations</div>
         <div className="flex-1 bg-gray-200 p-4 rounded-lg">
-          {recommendations.length > 0 ? (
+         {recommendations.length > 0 ? (
             recommendations.map((rec, index) => (
               <div key={index} className="mb-4">
-                <p>{rec}</p>
+                {/* Determine heading based on index */}
+                  {index === 0 ? (
+                    // Heading for the first lecture recommendation
+                    <h2 style={{ color: 'blue', fontSize: '20px', fontWeight: 'bold' }}>
+                      Lecture Recommendations
+                    </h2>
+                  ) : index === 2 ? (
+                    // Heading for other relevant posts starting from index 2
+                    <h3 style={{ color: 'black', fontSize: '20px', fontWeight: 'bold' }}>
+                      Relevant Posts
+                    </h3>
+                  ) :
+                    null
+                  }
+
+                
+                <p className={index >= 2 ? "text-red-500" : "text-black"}>
+                  {rec}
+                </p>
               </div>
             ))
           ) : (
