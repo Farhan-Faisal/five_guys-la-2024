@@ -2,18 +2,18 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-// Route to get discussion entries
+// Route to get a list of level 1 discussion replies
 router.get('/', async (req, res) => {
-    const courseId = req.query.courseId; // Course ID as a query parameter
-    const discussionId = req.query.discussionId; // Discussion ID as a query parameter
-    const canvasToken = process.env.CANVAS_TOKEN; // Get token from environment variables
+    const courseId = req.query.courseId;
+    const discussionId = req.query.discussionId;
+    const canvasToken = process.env.CANVAS_TOKEN;
 
     if (!courseId || !discussionId) {
         return res.status(400).json({ message: "Please provide both courseId and discussionId as query parameters." });
     }
 
     try {
-        // Fetch discussion entries from Canvas API
+        // Fetch discussion replies from Canvas API
         const apiUrl = `https://canvas.ubc.ca/api/v1/courses/${courseId}/discussion_topics/${discussionId}/entries?per_page=100&page=1`;
         const response = await axios.get(apiUrl, {
             headers: {

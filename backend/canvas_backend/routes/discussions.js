@@ -5,8 +5,8 @@ const router = express.Router();
 // Route to get discussion topics
 router.get('/', async (req, res) => {
     const name = (req.query.name || (req.body && req.body.name));
-    const courseId = req.query.courseId; // Assuming you pass course ID in the query
-    const canvasToken = process.env.CANVAS_TOKEN; // Get token from environment variables
+    const courseId = req.query.courseId;
+    const canvasToken = process.env.CANVAS_TOKEN;
 
     if (!courseId || !canvasToken) {
         return res.status(400).json({ message: "Please provide both a course ID and a Canvas authorization token." });
@@ -20,7 +20,14 @@ router.get('/', async (req, res) => {
         });
 
         const discussions = response.data;
-        return res.status(200).json(discussions);
+
+        // Map to return only id and title
+        const simplifiedDiscussions = discussions.map(discussion => ({
+            id: discussion.id,
+            title: discussion.title
+        }));
+
+        return res.status(200).json(simplifiedDiscussions);
     } catch (error) {
         console.error('Error fetching discussions:', error);
         return res.status(error.response ? error.response.status : 500).json({ message: "Error retrieving discussions from Canvas." });
