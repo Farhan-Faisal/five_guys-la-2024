@@ -1,0 +1,8 @@
+fastapi==0.95.1
+pydantic==1.10.2
+uvicorn==0.22.0
+python-multipart==0.0.6
+textstat==0.7.3
+nltk==3.8.1
+rank-bm25==0.2.2
+numpy==1.25.2
