@@ -6,6 +6,7 @@ const discussionEntriesRouter = require('./routes/discussionEntries'); // Import
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+const BASE_URL= process.env.BASE_URL;
 
 // Load environment variables from .env file
 dotenv.config();
@@ -26,5 +27,5 @@ app.use('/discussion-entries', discussionEntriesRouter); // Use the discussion e
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on ${BASE_URL}:${PORT}`);
 });

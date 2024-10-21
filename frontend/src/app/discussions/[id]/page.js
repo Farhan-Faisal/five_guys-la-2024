@@ -57,7 +57,7 @@ const DiscussionPage = () => {
     const fetchRecommendations = async () => {
       if (replyInput.trim() !== "") {
         try {
-          const response = await fetch("http://127.0.0.1:8000/similar_posts", {
+          const response = await fetch("https://five-guys-la-2024.onrender.com/similar_posts", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -95,7 +95,7 @@ const DiscussionPage = () => {
     const fetchReadabilityScore = async () => {
       if (replyInput.trim() !== "") {
         try {
-          const response = await fetch("http://127.0.0.1:8000/readability_score", {
+          const response = await fetch("https://five-guys-la-2024.onrender.com/readability_score", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
