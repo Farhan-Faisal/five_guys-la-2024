@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from RecommendationApp.similarity_retrival import PostSimilarityFinder
-from RecommendationApp.depth_ranker import DepthRanker
+from similarity_retrival import PostSimilarityFinder
+from depth_ranker import DepthRanker
 from fastapi.middleware.cors import CORSMiddleware
 
 # Initialize the FastAPI app
