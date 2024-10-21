@@ -6,23 +6,35 @@ const Home = () => {
   const [discussions, setDiscussions] = useState([]); // Initialize state for discussions
   const [loading, setLoading] = useState(true); // State to handle loading
 
-  useEffect(() => {
-    const fetchDiscussions = async () => {
-      try {
-        const response = await fetch('http://localhost:4000/discussions?courseId=161721');
+  /**
+   * Fetches discussion titles for a specific course.
+   *
+   * This function sends a GET request to the API to retrieve discussion titles for the specified course.
+   * It updates the `discussions` state with the fetched data and manages the loading state.
+   *
+   * @async
+   * @function fetchDiscussionsTitles
+   * @returns {Promise<void>} A promise that resolves when the discussion titles have been fetched and the state updated.
+   */
+  const fetchDiscussionsTitles = async () => {
+    try {
+        // console.log(process.env.NEXT_PUBLIC_YIBIN_BASE_URL);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_YIBIN_BASE_URL}/discussions?courseId=161721`);
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+            throw new Error('Network response was not ok');
         }
         const data = await response.json();
         setDiscussions(data); // Set discussions state with the fetched data
-      } catch (error) {
+    } catch (error) {
         console.error('Error fetching discussions:', error);
-      } finally {
+    } finally {
         setLoading(false); // Set loading to false after fetch
-      }
-    };
+    }
+  };
 
-    fetchDiscussions(); // Call the fetch function
+
+  useEffect(() => {
+    fetchDiscussionsTitles(); // Call the fetch function
   }, []); // Empty dependency array to run once on mount
 
   if (loading) {

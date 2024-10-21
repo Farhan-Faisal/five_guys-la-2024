@@ -5,10 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 
 const DiscussionPage = () => {
   const { id } = useParams(); // Get the dynamic route parameter 'id'
-  // const { title } = useParams();
-
   const router = useRouter(); // Use the router for navigation
-  // const  title = router.query;
 
   const [discussions, setDiscussions] = useState([]);
   const [readabilityScore, setReadabilityScore] = useState(null);
@@ -19,6 +16,118 @@ const DiscussionPage = () => {
 
   const [visibleRecommendations, setVisibleRecommendations] = useState([]);
 
+  /**
+   * Fetches discussion entries for a specific course and discussion based on the provided discussion ID.
+   *
+   * This function sends a GET request to the API to retrieve discussion entries for the specified course.
+   * It updates the `discussions` state with the fetched data and manages the loading state.
+   *
+   * @async
+   * @function fetch_discussion_entries
+   * @returns {Promise<void>} A promise that resolves when the discussions have been fetched and the state updated.
+   */
+  const fetch_discussion_entries = async () => {
+      fetch(`${process.env.NEXT_PUBLIC_YIBIN_BASE_URL}/discussion-entries?courseId=161721&discussionId=${id}`)
+      .then((response) => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then((data) => {
+          console.log("FARAHNA");
+          setDiscussions(data);
+          console.log("FARAHNA");
+      })
+      .catch((error) => console.error("Error fetching discussions:", error))
+      .finally(() => {
+          setLoading(false);
+      });
+  };
+
+  /**
+   * Fetches recommendations for similar posts based on the user's input reply and previously fetched discussions.
+   *
+   * This function sends a POST request to the API with the user's reply and previous discussions,
+   * then updates the `recommendations` state with the fetched similar posts.
+   *
+   * @async
+   * @function fetchRecommendations
+   * @returns {Promise<void>} A promise that resolves when the recommendations have been fetched and the state updated.
+   */
+  const fetchRecommendations = async () => {
+      if (replyInput.trim() !== "") {
+          try {
+              const response = await fetch(`${process.env.NEXT_PUBLIC_JIAYI_BASE_URL}/similar_posts`, {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                      input_post: replyInput,
+                      previous_replies: discussions,
+                      top_n: 3
+                  }),
+              });
+
+              if (response.ok) {
+                  const data = await response.json();
+                  console.log(data);
+                  const extractedRecommendations = data.similar_posts.map(postObj => postObj.post);
+                  setRecommendations(extractedRecommendations || []);
+              } else {
+                  console.error("Failed to fetch recommendations:", response.statusText);
+                  setRecommendations([]);
+              }
+          } catch (error) {
+              console.error("Error fetching recommendations:", error);
+              setRecommendations([]);
+          }
+      } else {
+          setRecommendations([]);
+      }
+  };
+
+  /**
+   * Fetches the Dale-Chall readability score for the user's input text.
+   *
+   * This function sends a POST request to the API with the user's reply to calculate the readability score.
+   * It updates the `readabilityScore` state with the fetched score if successful.
+   *
+   * @async
+   * @function fetchReadabilityScore
+   * @returns {Promise<void>} A promise that resolves when the readability score has been fetched and the state updated.
+   */
+  const fetchReadabilityScore = async () => {
+      if (replyInput.trim() !== "") {
+          try {
+              const response = await fetch(`${process.env.NEXT_PUBLIC_JIAYI_BASE_URL}/readability_score`, {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                      input_post: replyInput,
+                  }),
+              });
+
+              if (response.ok) {
+                  const data = await response.json();
+                  setReadabilityScore(data.dale_chall_readability_score);
+              } else {
+                  console.error("Failed to fetch readability score:", response.statusText);
+                  setReadabilityScore(null);
+              }
+          } catch (error) {
+              console.error("Error fetching readability score:", error);
+              setReadabilityScore(null);
+          }
+      } else {
+          setReadabilityScore(null);
+      }
+  };
+
+
   useEffect(() => {
     recommendations.forEach((_, index) => {
       setTimeout(() => {
@@ -27,100 +136,17 @@ const DiscussionPage = () => {
     });
   }, [recommendations]);
   
-
   useEffect(() => {
     setLoading(true);  // Start loading when the fetch begins
     setDiscussions([]);
-  
-    // Fetch data from the provided endpoint
-    fetch(`http://localhost:4000/discussion-entries?courseId=161721&discussionId=${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("FARAHNA")
-        setDiscussions(data);
-        console.log("FARAHNA")
-        // console.log(formattedData)
-      })
-      .catch((error) => console.error("Error fetching discussions:", error))  // Handle any errors
-      .finally(() => {
-        setLoading(false); // Ensure loading is set to false after fetching
-      });
+    fetch_discussion_entries();
   }, []);
 
- 
   useEffect(() => {
-    const fetchRecommendations = async () => {
-      if (replyInput.trim() !== "") {
-        try {
-          const response = await fetch("https://five-guys-la-2024.onrender.com/similar_posts", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              input_post: replyInput,
-              previous_replies: discussions,
-              top_n: 3
-            }),
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            console.log(data);
-            const extractedRecommendations = data.similar_posts.map(postObj => postObj.post);
-            setRecommendations(extractedRecommendations || []);
-
-          } else {
-            console.error("Failed to fetch recommendations:", response.statusText);
-            setRecommendations([]); // Reset recommendations in case of failure
-          }
-        } catch (error) {
-          console.error("Error fetching recommendations:", error);
-          setRecommendations([]); // Reset recommendations in case of error
-        }
-      } else {
-        setRecommendations([]); // Clear recommendations if input is empty
-      }
-    };
-
     fetchRecommendations();
   }, [replyInput]);
 
   useEffect(() => {
-    const fetchReadabilityScore = async () => {
-      if (replyInput.trim() !== "") {
-        try {
-          const response = await fetch("https://five-guys-la-2024.onrender.com/readability_score", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              input_post: replyInput,
-            }),
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            setReadabilityScore(data.dale_chall_readability_score); // Adjust according to your API response structure
-          } else {
-            console.error("Failed to fetch readability score:", response.statusText);
-            setReadabilityScore(null); // Reset readability score in case of failure
-          }
-        } catch (error) {
-          console.error("Error fetching readability score:", error);
-          setReadabilityScore(null); // Reset readability score in case of error
-        }
-      } else {
-        setReadabilityScore(null); // Clear score if input is empty
-      }
-    };
-
     fetchReadabilityScore();
   }, [replyInput]);
 
