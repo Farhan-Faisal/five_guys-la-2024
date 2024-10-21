@@ -5,7 +5,7 @@
 Sofos is a full-stack web application designed to enhance discussions on Canvas discussion boards. By providing personalized recommendations and evaluating the complexity of user replies, Sofos aims to foster deeper and more meaningful conversations among peers.
 
 ## App Demo
-Visit [Sofos](https://five-guys-la-2024.vercel.app)
+Visit [Sofos](https://sofos-2024.vercel.app)
 
 ## Features
 
