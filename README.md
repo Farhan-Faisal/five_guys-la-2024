@@ -43,9 +43,6 @@ Visit [Sofos](https://sofos-2024.vercel.app)
 
 ![Architecture Diagram](https://github.com/Farhan-Faisal/five_guys-la-2024/blob/67b174d9273ebdeb45ee62b93366abd8628e395e/frontend/public/architecture.png)
 
-<img src="https://github.com/Farhan-Faisal/five_guys-la-2024/blob/67b174d9273ebdeb45ee62b93366abd8628e395e/frontend/public/architecture.png" alt="Architecture Diagram" />
-
-
 
 ## Installation
 
