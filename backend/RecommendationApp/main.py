@@ -38,8 +38,8 @@ class ReadabilityResponse(BaseModel):
     dale_chall_readability_score: float
 
 # Initialize the similarity finder
-lec_similarity_finder = PostSimilarityFinder(lecture_doc_path='./RecommendationApp/lecture_notes.txt')
-post_sim_finder = PostSimilarityFinder(lecture_doc_path='./RecommendationApp/message_list.txt')
+lec_similarity_finder = PostSimilarityFinder(lecture_doc_path='./lecture_notes.txt')
+post_sim_finder = PostSimilarityFinder(lecture_doc_path='./message_list.txt')
 
 
 @app.post("/similar_posts", response_model=SimilarityResponse)
