@@ -47,19 +47,34 @@ const Home = () => {
 
   return (
     <div className="h-screen flex justify-items-center bg-gray-100">
-      {/* LEFT side (COURSES) */}
+      {/* LEFT SIDE */}
       <div className="w-1/2 flex flex-col p-4 m-4 rounded border-black justify-center bg-white">
-        <div className="p-4 bg-blue-500 text-white text-center font-bold">
-          Courses
+
+        {/* Beta Version and Logo Section */}
+        <div className="flex flex-col items-center rounded-xl shadow p-4">
+          {/* App Logo */}
+          <img src="/favicon.png" alt="App Logo" className="mb-2 w-full h-auto" />
+
+          {/* Beta Version Message */}
+          <p className="text-center text-gray-700 mb-4">
+            Beta version. Access limited to only one canvas course for website demo.
+          </p>
         </div>
 
-        <div className="flex-1 p- 4 overflow-y-auto">
-          <div className="space-y-4">
-            <Link key="a" href={`/discussions`}>
-              <div className="p-3 bg-gray-200 rounded-lg m-2 cursor-pointer hover:bg-gray-300">
-                <strong>Learning Analytics</strong>
-              </div>
-            </Link>
+        <div className="rounded-xl shadow p-2 m-2 border-black justify-center bg-white">
+          {/* COURSES */}
+          <div className="p-4 bg-blue-500 text-white text-center font-bold">
+            Courses
+          </div>
+
+          <div className="flex-1 p- 4 overflow-y-auto">
+            <div className="space-y-4">
+              <Link key="a" href={`/discussions`}>
+                <div className="p-3 bg-gray-200 rounded-lg m-2 cursor-pointer hover:bg-gray-300">
+                  <strong>Learning Analytics</strong>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -82,7 +97,7 @@ const Home = () => {
               </Link>
             ))}
           </div>
-          
+
         </div>
         
       </div>

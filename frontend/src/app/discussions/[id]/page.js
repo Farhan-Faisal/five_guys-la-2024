@@ -127,7 +127,6 @@ const DiscussionPage = () => {
       }
   };
 
-
   useEffect(() => {
     // Retrieve data from local storage
     const storedTitle = localStorage.getItem('discussionTitle');
