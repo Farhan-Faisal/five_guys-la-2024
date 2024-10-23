@@ -63,11 +63,11 @@ const Home = () => {
 
         <div className="rounded-xl shadow p-2 m-2 border-black justify-center bg-white">
           {/* COURSES */}
-          <div className="p-4 bg-blue-500 text-white text-center font-bold">
+          <div className="p-4 bg-blue-500 rounded-xl text-white text-center font-bold">
             Courses
           </div>
 
-          <div className="flex-1 p- 4 overflow-y-auto">
+          <div className="flex-1 p-2 overflow-y-auto">
             <div className="space-y-4">
               <Link key="a" href={`/discussions`}>
                 <div className="p-3 bg-gray-200 rounded-lg m-2 cursor-pointer hover:bg-gray-300">
@@ -81,7 +81,7 @@ const Home = () => {
       
       {/* RIGHT side (DISCUSSION TITLES) */}
       <div className="w-1/2 flex flex-col p-4 m-4 rounded border-black justify-center bg-white">
-        <div className="p-4 bg-blue-500 text-white text-center font-bold">
+        <div className="p-4 bg-blue-500 text-white rounded-xl text-center font-bold">
           Discussion Titles
         </div>
         
