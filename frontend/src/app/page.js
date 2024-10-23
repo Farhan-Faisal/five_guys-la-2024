@@ -86,8 +86,6 @@ const Home = () => {
         
       </div>
 
-     
-
     </div>
   );
 };
