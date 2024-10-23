@@ -69,7 +69,7 @@ const Home = () => {
 
           <div className="flex-1 p-2 overflow-y-auto">
             <div className="space-y-4">
-              <Link key="a" href={`/discussions`}>
+              <Link key="a" href={`/`}>
                 <div className="p-3 bg-gray-200 rounded-lg m-2 cursor-pointer hover:bg-gray-300">
                   <strong>Learning Analytics</strong>
                 </div>
