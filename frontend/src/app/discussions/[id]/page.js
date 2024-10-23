@@ -6,14 +6,14 @@ import { useParams, useRouter } from 'next/navigation';
 const DiscussionPage = () => {
   const { id } = useParams(); // Get the dynamic route parameter 'id'
   const router = useRouter(); // Use the router for navigation
-
+  
+  const [title, setTitle] = useState('Loading...');
   const [discussions, setDiscussions] = useState([]);
   const [readabilityScore, setReadabilityScore] = useState(null);
   const [loading, setLoading] = useState(true);
   const [replyInput, setReplyInput] = useState(""); // State for reply input
   const [recommendations, setRecommendations] = useState([]); // State for recommendations
   const [userName, setUserName] = useState("Farhan"); // Simulating your name being stored in state
-
   const [visibleRecommendations, setVisibleRecommendations] = useState([]);
 
   /**
@@ -129,6 +129,12 @@ const DiscussionPage = () => {
 
 
   useEffect(() => {
+    // Retrieve data from local storage
+    const storedTitle = localStorage.getItem('discussionTitle');
+    setTitle(storedTitle);
+  }, []);
+
+  useEffect(() => {
     recommendations.forEach((_, index) => {
       setTimeout(() => {
         setVisibleRecommendations((prev) => [...prev, index]);
@@ -198,23 +204,27 @@ const DiscussionPage = () => {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Left side (Replies and Reply Input) */}
-      <div className="w-1/2 flex flex-col border-r border-gray-300 bg-white">
-        <div className="p-4 bg-blue-500 text-white text-center font-bold">
-          <span>Ketchup or Mustard?</span>
-          <br/>
-          <span>Do you prefer or mustard? Why?</span>
+      <div className="w-1/2 flex flex-col p-4 m-4 border-black justify-center bg-white rounded-3xl shadow-lg">
+        
+        <div className="p-2 flex justify-between items-center bg-blue-500 text-white text-center rounded-xl font-bold">
+          <div className="p-2">
+            <button onClick={() => router.back()} className="mb-4 p-2 bg-gray-300 rounded-lg">
+              Back
+            </button>
+          </div>
+          
+          <div className="flex-grow text-center p-4 text-xl">
+            {/* <span>Ketchup or Mustard?</span>
+              <br/> */}
+            <span>{title}</span>
+          </div>
+
+          <div className="p-2 invisible">
+            <button className="p-2 bg-gray-300 rounded-lg">Placeholder</button>
+          </div>
         </div>
 
-        <div className="p-4">
-          <button
-            onClick={() => router.back()}
-            className="mb-4 p-2 bg-gray-300 rounded-lg"
-          >
-            Back to Discussions
-          </button>
-        </div>
-
-        <div className="flex-1 p-4 overflow-y-auto">
+        <div className="flex-1 mt-2 p-4 overflow-y-auto">
           {discussions.map((reply, index) => (
             <div
               key={index}
@@ -239,8 +249,7 @@ const DiscussionPage = () => {
             placeholder="Type your reply..."
           />
 
-        <button
-            onClick={handleSendReply}
+          <button
             style={{ backgroundColor: calculateColor(Math.round(readabilityScore) == 19 ? 0 : Math.round(readabilityScore)) }} // Set dynamic background color
             className="ml-4 w-12 h-12 flex items-center justify-center bg-blue-500 text-white rounded-full hover:bg-blue-600"
           >
@@ -260,40 +269,42 @@ const DiscussionPage = () => {
         </div>
       </div>
 
-      {/* Right side (Recommendations based on reply) */}
-      <div className="w-1/2 p-4 bg-gray-50">
-        <div className="text-lg font-bold mb-4">Recommendations</div>
-        <div className="flex-1 bg-gray-200 p-4 rounded-lg">
-        {recommendations.length > 0 ? (
-        recommendations.map((rec, index) => {
-          // Calculate inline styles for fade-in effect
-          const isVisible = visibleRecommendations.includes(index);
-          const fadeStyle = {
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-            transition: 'opacity 0.5s, transform 0.5s', // Duration for fade-in effect
-          };
 
-          return (
-            <div key={index} className="mb-4" style={fadeStyle}>
-              {index === 0 ? (
-                <h2 style={{ color: 'blue', fontSize: '20px', fontWeight: 'bold' }}>
-                  Lecture Recommendations
-                </h2>
-              ) : index === 2 ? (
-                <h3 style={{ color: 'black', fontSize: '20px', fontWeight: 'bold' }}>
-                  Relevant Posts
-                </h3>
-              ) : null}
-              <p className={index >= 2 ? "text-red-500" : "text-black"}>
-                {rec}
-              </p>
-            </div>
-          );
-        })
-      ) : (
-        <p>Start typing your reply to see recommendations.</p>
-      )}
+
+      {/* Right side (Recommendations based on reply) */}
+      <div className="w-1/2 flex flex-col p-4 m-4 rounded-3xl shadow border-black justify-center bg-white">
+        <div className="text-lg font-bold mb-4">Recommendations</div>
+          <div className="flex-1 bg-gray-200 p-4 rounded-lg overflow-y-auto">
+            {recommendations.length > 0 ? (
+              recommendations.map((rec, index) => {
+              
+                  // Calculate inline styles for fade-in effect
+                const isVisible = visibleRecommendations.includes(index);
+                const fadeStyle = {
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
+                  transition: 'opacity 0.5s, transform 0.5s', // Duration for fade-in effect
+                };
+
+                return (
+                  <div key={index} className="mb-4" style={fadeStyle}>
+                    {index === 0 ? (
+                      <h2 style={{ color: 'blue', fontSize: '20px', fontWeight: 'bold' }}>
+                        Lecture Recommendations
+                      </h2>
+                    ) : index === 2 ? (
+                      <h3 style={{ color: 'black', fontSize: '20px', fontWeight: 'bold' }}>
+                        Relevant Posts
+                      </h3>
+                    ) : null}
+                    <p className={index >= 2 ? "text-red-500" : "text-black"}>
+                      {rec}
+                    </p>
+                  </div>
+                );
+              })) : (
+              <p>Start typing your reply to see recommendations.</p>
+            )}
         </div>
       </div>
     </div>
